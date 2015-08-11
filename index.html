@@ -1,1 +1,182 @@
-project 6a
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Restaurant</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!--   <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="small-device.css" />
+ -->
+  <!--  <link rel="stylesheet" media="(orientation: landscape)" href="landscape.css">
+-->
+  <!-- example -->
+
+  <link rel="stylesheet" href="css/material_cards.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-59285353-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+
+<body id="body" class="rel">
+
+  <span class="center noselect button-box" id="spinner">
+    <i class="fa fa-refresh fa-spin  fa-4x"></i>
+  </span>
+
+<!-- hero -->
+  <div id="hero" class="card heroCard cardwidth">
+
+    <div class="card__image">
+      <img class="card__img" src="img/restaurant.jpeg" alt="boo!">
+      <div class="card__title">The Food and Red Wine Restaurant</div>
+      <!-- <span class="right">III</span> -->
+    </div>
+
+    <div class="card__content">
+      <p class="" id="msg1"></p>
+      <p class="" id="msg2"></p>
+      <p>123 Smith Street, Melbourne</p>
+      <p><i class="fa fa-phone"></i> (03) 1234 5678</p>
+    </div>
+
+    <div class="card__action">
+      <a class="card__a" href='#'>Map</a>
+      <a class="card__a" href='#'>Hours</a>
+    </div>
+
+  </div>
+  <!-- hero -->
+
+<!-- text resize -->
+  <span class="btn-resize noselect shadow" id="text-sizer">
+    <!--     <span class="md" id="A1"><i class="fa fa-mobile"></i></span>
+<span class="md" id="A2"><i class="fa fa-tablet"></i></span>
+<span class="md" id="A3"><i class="fa fa-keyboard-o"></i></span> -->
+
+    <span class="sm10" id="A1">A</span>
+    <span class="sm8" id="A2">A</span>
+    <span class="sm6" id="A3">A</span>
+  </span>
+  <!-- text resize -->
+
+
+
+
+<!-- select boxes -->
+  <div class="" data-ng-app="images" data-ng-controller="imagesController">
+
+    <div class="">
+      <select class="standardCardWidth" onchange="slide();" data-ng-model="showModes" data-ng-model-options="{debounce:500}">
+        <option value="" selected>All Meals</option>
+        <option data-ng-repeat="item in list | orderBy:'Mode' | unique:'Mode'" value="{{item.Mode}}">{{item.Mode}}</option>
+      </select>
+
+
+      <select class="standardCardWidth" onchange="slide();" data-ng-model="showType" data-ng-model-options="{debounce:500}">
+        <option value="" selected>All Meal Types</option>
+        <option data-ng-repeat="item in list | orderBy:'Type' | unique:'Type'" value="{{item.Type}}">{{item.Type}}</option>
+      </select>
+
+      <input type="text" data-ng-model="txtQuery" placeholder="Search">
+
+    </div>
+    <!-- select boxes -->
+
+
+
+
+
+
+
+
+
+
+<!-- individual cards -->
+    <ul id="images_grid">
+
+
+      <li class="card cardwidth" data-ng-repeat="item in slide = (list | orderBy:'Name' | filter:showModes | filter:showType | filter:txtQuery)">
+
+        <div class="card__image">
+          <img class="card__img" data-ng-src="img/{{item.Image}}" alt="{{item.Name}}">
+          <div class="card__title">{{item.Title}}</div>
+        </div>
+
+        <div class="card__content">
+          <p>{{item.Name}}</p>
+          <p class="card__detail">{{item.Content}}</p>
+        </div>
+
+        <div class="card__action">
+          <a class="card__a" href='#'>Details</a>
+        </div>
+
+      </li>
+
+    </ul>
+    <!-- individual cards -->
+
+
+    <!-- img -->
+    <!--
+
+  <div class="card">
+
+  <div class="card__image">
+      <img class="card__img" src="img/WerlaFe.jpg">
+      <span class="card__title">1 Card Title</span>
+  </div>
+
+  <div class="card__content">
+      <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+  </div>
+
+  <div class="card__action">
+      <a class="card__a" href='#'>This is a link</a>
+  </div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+    <p data-ng-show="slide.length === 0">No results found.</p>
+  </div>
+
+  <script src='lib/angular.js'></script>
+  <script src='lib/angular-filter.min.js'></script>
+
+  <script src="js/index.js"></script>
+  <script src="js/resize.js"></script>
+
+</body>
+<!--
+
+</html>
